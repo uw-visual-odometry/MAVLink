@@ -1,0 +1,16 @@
+source;ros_domain_id.txt
+source;share/depth_pkg/hook/path.ps1
+source;share/depth_pkg/hook/path.dsv
+source;share/depth_pkg/hook/path.sh
+source;ros_domain_id.txt
+source;share/depth_pkg/hook/pythonpath.ps1
+source;share/depth_pkg/hook/pythonpath.dsv
+source;share/depth_pkg/hook/pythonpath.sh
+source;ros_domain_id.txt
+source;share/depth_pkg/hook/pythonscriptspath.ps1
+source;share/depth_pkg/hook/pythonscriptspath.dsv
+source;share/depth_pkg/hook/pythonscriptspath.sh
+source;ros_domain_id.txt
+source;../../build/depth_pkg/share/depth_pkg/hook/pythonpath_develop.ps1
+source;../../build/depth_pkg/share/depth_pkg/hook/pythonpath_develop.dsv
+source;../../build/depth_pkg/share/depth_pkg/hook/pythonpath_develop.sh

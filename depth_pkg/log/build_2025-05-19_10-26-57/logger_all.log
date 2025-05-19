@@ -1,0 +1,139 @@
+[1.247s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install', '--packages-select', 'depth_pkg']
+[1.247s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=6, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['depth_pkg'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], bazel_args=None, bazel_task=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, meson_args=[], ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_alias.argument_parser.alias.AliasArgumentDecorator object at 0xffffb9e91cf0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffffba01d6f0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffffba01d6f0>>, mixin_verb=('build',))
+[1.841s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.842s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.842s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.842s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.842s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.842s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.842s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/sysop/MAVLink/depth_pkg'
+[1.842s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.843s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.843s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.843s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.843s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.843s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.843s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.843s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.843s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.850s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['bazel', 'cmake', 'meson', 'python']
+[1.850s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'bazel'
+[1.850s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.850s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'meson'
+[1.850s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.850s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.850s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.851s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.851s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.851s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.851s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.851s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.851s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.852s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.852s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.852s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.852s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[1.852s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[1.852s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[1.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[1.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[1.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[1.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[1.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[1.853s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[1.855s] DEBUG:colcon.colcon_core.package_identification:Failed to parse potential ROS package manifest in'src': Error(s) in package 'src/package.xml':
+The manifest contains invalid XML:
+junk after document element: line 21, column 2
+[1.856s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['bazel', 'cmake', 'meson', 'python']
+[1.856s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'bazel'
+[1.856s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[1.856s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'meson'
+[1.856s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[1.856s] DEBUG:colcon.colcon_core.package_identification:Python package in 'src' passes arguments to the setup() function which requires a different identification extension than 'python'
+[1.856s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[1.856s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[2.958s] DEBUG:colcon.colcon_core.package_identification:Package 'src' with type 'python' and name 'depth_pkg'
+[2.958s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[2.958s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[2.959s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[2.959s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[2.959s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[3.020s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[3.020s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[3.090s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 340 installed packages in /opt/ros/humble
+[3.096s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/sysop/MAVLink/depth_pkg/install
+[3.096s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'bazel_args' from command line to 'None'
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'bazel_task' from command line to 'None'
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'cmake_args' from command line to 'None'
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'cmake_target' from command line to 'None'
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'meson_args' from command line to '[]'
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[3.207s] Level 5:colcon.colcon_core.verb:set package 'depth_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[3.207s] DEBUG:colcon.colcon_core.verb:Building package 'depth_pkg' with the following arguments: {'ament_cmake_args': None, 'bazel_args': None, 'bazel_task': None, 'build_base': '/home/sysop/MAVLink/depth_pkg/build/depth_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/sysop/MAVLink/depth_pkg/install/depth_pkg', 'merge_install': False, 'meson_args': [], 'path': '/home/sysop/MAVLink/depth_pkg/src', 'symlink_install': True, 'test_result_base': None}
+[3.208s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[3.222s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[3.223s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/sysop/MAVLink/depth_pkg/src'
+[3.247s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[3.248s] DEBUG:colcon.colcon_ros_domain_id_coordinator.shell.ros_domain_id:Allocated ROS_DOMAIN_ID=22 for '/home/sysop/MAVLink/depth_pkg/build/depth_pkg'
+[3.248s] INFO:colcon.colcon_core.shell:Skip shell extension 'ros_domain_id' for command environment: 
+[3.248s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.248s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[6.747s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sysop/MAVLink/depth_pkg/build/depth_pkg': PYTHONPATH=/home/sysop/MAVLink/depth_pkg/build/depth_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sysop/MAVLink/depth_pkg/install/depth_pkg/lib/python3.10/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(base) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sysop/MAVLink/depth_pkg/build/depth_pkg/build --no-deps symlink_data
+[8.919s] Level 1:colcon.colcon_core.shell:create_environment_hook('depth_pkg', 'pythonpath_develop')
+[8.920s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sysop/MAVLink/depth_pkg/build/depth_pkg/share/depth_pkg/hook/pythonpath_develop.ps1'
+[8.922s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sysop/MAVLink/depth_pkg/build/depth_pkg/share/depth_pkg/hook/pythonpath_develop.dsv'
+[8.923s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sysop/MAVLink/depth_pkg/build/depth_pkg/share/depth_pkg/hook/pythonpath_develop.sh'
+[8.929s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sysop/MAVLink/depth_pkg/build/depth_pkg' returned '0': PYTHONPATH=/home/sysop/MAVLink/depth_pkg/build/depth_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sysop/MAVLink/depth_pkg/install/depth_pkg/lib/python3.10/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(base) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sysop/MAVLink/depth_pkg/build/depth_pkg/build --no-deps symlink_data
+[8.940s] Level 1:colcon.colcon_core.environment:checking '/home/sysop/MAVLink/depth_pkg/install/depth_pkg' for CMake module files
+[8.941s] Level 1:colcon.colcon_core.environment:checking '/home/sysop/MAVLink/depth_pkg/install/depth_pkg' for CMake config files
+[8.943s] Level 1:colcon.colcon_core.environment:checking '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/lib'
+[8.943s] Level 1:colcon.colcon_core.environment:checking '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/bin'
+[8.943s] Level 1:colcon.colcon_core.shell:create_environment_hook('depth_pkg', 'path')
+[8.944s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/hook/path.ps1'
+[8.945s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/hook/path.dsv'
+[8.946s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/hook/path.sh'
+[8.946s] Level 1:colcon.colcon_core.environment:checking '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/lib/pkgconfig/depth_pkg.pc'
+[8.947s] Level 1:colcon.colcon_core.environment:checking '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/lib/python3.10/site-packages'
+[8.947s] Level 1:colcon.colcon_core.shell:create_environment_hook('depth_pkg', 'pythonpath')
+[8.948s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/hook/pythonpath.ps1'
+[8.953s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/hook/pythonpath.dsv'
+[8.954s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/hook/pythonpath.sh'
+[8.955s] Level 1:colcon.colcon_core.environment:checking '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/bin'
+[8.955s] Level 1:colcon.colcon_core.shell:create_environment_hook('depth_pkg', 'pythonscriptspath')
+[8.956s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/hook/pythonscriptspath.ps1'
+[8.957s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/hook/pythonscriptspath.dsv'
+[8.957s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/hook/pythonscriptspath.sh'
+[8.958s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(depth_pkg)
+[8.959s] INFO:colcon.colcon_core.shell:Creating package script '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/package.ps1'
+[8.962s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/package.dsv'
+[8.964s] INFO:colcon.colcon_core.shell:Creating package script '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/package.sh'
+[8.965s] INFO:colcon.colcon_core.shell:Creating package script '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/package.bash'
+[8.967s] INFO:colcon.colcon_core.shell:Creating package script '/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg/package.zsh'
+[8.968s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/colcon-core/packages/depth_pkg)
+[8.969s] DEBUG:colcon.colcon_ros_domain_id_coordinator.shell.ros_domain_id:Released ROS_DOMAIN_ID=22 for '/home/sysop/MAVLink/depth_pkg/build/depth_pkg'
+[8.970s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[8.971s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[8.971s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[8.971s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[9.010s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[9.010s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[9.010s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[9.089s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.Spawn.ChildExited: Process org.freedesktop.Notifications exited with status 1
+[9.090s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[9.091s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/sysop/MAVLink/depth_pkg/install/local_setup.ps1'
+[9.093s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/sysop/MAVLink/depth_pkg/install/_local_setup_util_ps1.py'
+[9.096s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/sysop/MAVLink/depth_pkg/install/setup.ps1'
+[9.129s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/sysop/MAVLink/depth_pkg/install/local_setup.sh'
+[9.130s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/sysop/MAVLink/depth_pkg/install/_local_setup_util_sh.py'
+[9.131s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/sysop/MAVLink/depth_pkg/install/setup.sh'
+[9.168s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/sysop/MAVLink/depth_pkg/install/local_setup.bash'
+[9.170s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/sysop/MAVLink/depth_pkg/install/setup.bash'
+[9.202s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/sysop/MAVLink/depth_pkg/install/local_setup.zsh'
+[9.203s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/sysop/MAVLink/depth_pkg/install/setup.zsh'
+[9.235s] INFO:colcon.colcon_core.shell:Creating '/home/sysop/MAVLink/depth_pkg/install/spawn_shell.bash'

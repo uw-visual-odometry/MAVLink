@@ -1,0 +1,31 @@
+[1.512s] Invoking command in '/home/sysop/MAVLink/teg_MAVLink/src/my_bridge_pkg': PYTHONPATH=/home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sysop/MAVLink/teg_MAVLink/install/my_bridge_pkg/lib/python3.10/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(base) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_bridge_pkg build --build-base /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/build install --record /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/install.log --single-version-externally-managed
+[2.410s] running egg_info
+[2.411s] creating ../../build/my_bridge_pkg/my_bridge_pkg.egg-info
+[2.411s] writing ../../build/my_bridge_pkg/my_bridge_pkg.egg-info/PKG-INFO
+[2.412s] writing dependency_links to ../../build/my_bridge_pkg/my_bridge_pkg.egg-info/dependency_links.txt
+[2.412s] writing entry points to ../../build/my_bridge_pkg/my_bridge_pkg.egg-info/entry_points.txt
+[2.412s] writing requirements to ../../build/my_bridge_pkg/my_bridge_pkg.egg-info/requires.txt
+[2.412s] writing top-level names to ../../build/my_bridge_pkg/my_bridge_pkg.egg-info/top_level.txt
+[2.421s] writing manifest file '../../build/my_bridge_pkg/my_bridge_pkg.egg-info/SOURCES.txt'
+[2.424s] reading manifest file '../../build/my_bridge_pkg/my_bridge_pkg.egg-info/SOURCES.txt'
+[2.426s] writing manifest file '../../build/my_bridge_pkg/my_bridge_pkg.egg-info/SOURCES.txt'
+[2.426s] running build
+[2.426s] running build_py
+[2.426s] creating /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/build
+[2.427s] creating /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/build/lib
+[2.427s] creating /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/build/lib/my_bridge_pkg
+[2.427s] copying my_bridge_pkg/__init__.py -> /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/build/lib/my_bridge_pkg
+[2.427s] copying my_bridge_pkg/ros2_mavlink_bridge.py -> /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/build/lib/my_bridge_pkg
+[2.427s] running install
+[2.428s] running install_lib
+[2.430s] creating /home/sysop/MAVLink/teg_MAVLink/install/my_bridge_pkg/lib/python3.10/site-packages/my_bridge_pkg
+[2.430s] copying /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/build/lib/my_bridge_pkg/__init__.py -> /home/sysop/MAVLink/teg_MAVLink/install/my_bridge_pkg/lib/python3.10/site-packages/my_bridge_pkg
+[2.430s] copying /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/build/lib/my_bridge_pkg/ros2_mavlink_bridge.py -> /home/sysop/MAVLink/teg_MAVLink/install/my_bridge_pkg/lib/python3.10/site-packages/my_bridge_pkg
+[2.434s] byte-compiling /home/sysop/MAVLink/teg_MAVLink/install/my_bridge_pkg/lib/python3.10/site-packages/my_bridge_pkg/__init__.py to __init__.cpython-310.pyc
+[2.435s] byte-compiling /home/sysop/MAVLink/teg_MAVLink/install/my_bridge_pkg/lib/python3.10/site-packages/my_bridge_pkg/ros2_mavlink_bridge.py to ros2_mavlink_bridge.cpython-310.pyc
+[2.437s] running install_egg_info
+[2.444s] Copying ../../build/my_bridge_pkg/my_bridge_pkg.egg-info to /home/sysop/MAVLink/teg_MAVLink/install/my_bridge_pkg/lib/python3.10/site-packages/my_bridge_pkg-0.1.0-py3.10.egg-info
+[2.445s] running install_scripts
+[2.516s] Installing ros2_mavlink_bridge script to /home/sysop/MAVLink/teg_MAVLink/install/my_bridge_pkg/bin
+[2.517s] writing list of installed files to '/home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/install.log'
+[2.587s] Invoked command in '/home/sysop/MAVLink/teg_MAVLink/src/my_bridge_pkg' returned '0': PYTHONPATH=/home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sysop/MAVLink/teg_MAVLink/install/my_bridge_pkg/lib/python3.10/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(base) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/my_bridge_pkg build --build-base /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/build install --record /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg/install.log --single-version-externally-managed

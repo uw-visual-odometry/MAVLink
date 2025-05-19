@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>my_bridge_pkg</name>
+  <version>0.1.0</version>
+  <description>ROS2 to MAVLink bridge</description>
+  <maintainer email="teglal28@gmail.com">Tegbir Lalli</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>setuptools</buildtool_depend>
+  <build_type>ament_python</build_type>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>pymavlink</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+</package>

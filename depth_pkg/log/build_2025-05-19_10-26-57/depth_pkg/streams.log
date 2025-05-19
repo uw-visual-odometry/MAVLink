@@ -1,0 +1,28 @@
+[3.517s] Invoking command in '/home/sysop/MAVLink/depth_pkg/build/depth_pkg': PYTHONPATH=/home/sysop/MAVLink/depth_pkg/build/depth_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sysop/MAVLink/depth_pkg/install/depth_pkg/lib/python3.10/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(base) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sysop/MAVLink/depth_pkg/build/depth_pkg/build --no-deps symlink_data
+[4.786s] running develop
+[4.976s] /usr/lib/python3/dist-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: 1.12.1-git20200711.33e2d80-dfsg1-0.6 is an invalid version and will not be supported in a future release
+[4.980s]   warnings.warn(
+[5.444s] running egg_info
+[5.444s] creating depth_pkg.egg-info
+[5.444s] writing depth_pkg.egg-info/PKG-INFO
+[5.445s] writing dependency_links to depth_pkg.egg-info/dependency_links.txt
+[5.446s] writing entry points to depth_pkg.egg-info/entry_points.txt
+[5.446s] writing requirements to depth_pkg.egg-info/requires.txt
+[5.446s] writing top-level names to depth_pkg.egg-info/top_level.txt
+[5.456s] writing manifest file 'depth_pkg.egg-info/SOURCES.txt'
+[5.460s] reading manifest file 'depth_pkg.egg-info/SOURCES.txt'
+[5.461s] writing manifest file 'depth_pkg.egg-info/SOURCES.txt'
+[5.568s] running build_ext
+[5.568s] Creating /home/sysop/MAVLink/depth_pkg/install/depth_pkg/lib/python3.10/site-packages/depth-pkg.egg-link (link to .)
+[5.571s] Installing depth_to_mavlink script to /home/sysop/MAVLink/depth_pkg/install/depth_pkg/bin
+[5.571s] 
+[5.571s] Installed /home/sysop/MAVLink/depth_pkg/build/depth_pkg
+[5.572s] running symlink_data
+[5.572s] creating /home/sysop/MAVLink/depth_pkg/install/depth_pkg/share
+[5.572s] creating /home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/ament_index
+[5.572s] creating /home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/ament_index/resource_index
+[5.572s] creating /home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/ament_index/resource_index/packages
+[5.573s] symbolically linking /home/sysop/MAVLink/depth_pkg/build/depth_pkg/resource/depth_pkg -> /home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/ament_index/resource_index/packages
+[5.573s] creating /home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg
+[5.573s] symbolically linking /home/sysop/MAVLink/depth_pkg/build/depth_pkg/package.xml -> /home/sysop/MAVLink/depth_pkg/install/depth_pkg/share/depth_pkg
+[5.700s] Invoked command in '/home/sysop/MAVLink/depth_pkg/build/depth_pkg' returned '0': PYTHONPATH=/home/sysop/MAVLink/depth_pkg/build/depth_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sysop/MAVLink/depth_pkg/install/depth_pkg/lib/python3.10/site-packages:${PYTHONPATH} VIRTUAL_ENV_PROMPT=(base) /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sysop/MAVLink/depth_pkg/build/depth_pkg/build --no-deps symlink_data

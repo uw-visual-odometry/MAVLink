@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my_bridge_pkg"
+version = "0.1.0"
+description = "ROS2 to MAVLink bridge"
+requires-python = ">=3.10"
+dependencies = [
+    "pymavlink",
+    "rclpy",
+    "setuptools"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+ 
+[project.scripts]
+ros2_mavlink_bridge = "my_bridge_pkg.ros2_mavlink_bridge:main"

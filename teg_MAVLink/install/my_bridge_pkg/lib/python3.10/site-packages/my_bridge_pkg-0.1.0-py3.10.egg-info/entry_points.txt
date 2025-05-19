@@ -1,0 +1,3 @@
+[console_scripts]
+ros2_mavlink_bridge = my_bridge_pkg.ros2_mavlink_bridge:main
+
