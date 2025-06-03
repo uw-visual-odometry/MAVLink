@@ -1,0 +1,11 @@
+pyproject.toml
+setup.cfg
+setup.py
+my_bridge_pkg/__init__.py
+my_bridge_pkg/ros2_mavlink_bridge.py
+my_bridge_pkg.egg-info/PKG-INFO
+my_bridge_pkg.egg-info/SOURCES.txt
+my_bridge_pkg.egg-info/dependency_links.txt
+my_bridge_pkg.egg-info/entry_points.txt
+my_bridge_pkg.egg-info/requires.txt
+my_bridge_pkg.egg-info/top_level.txt

@@ -1,3 +1,0 @@
-[console_scripts]
-depth_to_mavlink = depth_pkg.depth_pkg:main
-

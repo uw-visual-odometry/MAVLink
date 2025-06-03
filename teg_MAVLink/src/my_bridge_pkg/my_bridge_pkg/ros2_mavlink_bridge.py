@@ -4,16 +4,18 @@
 # Float32 is a ROS2 message type that contains a single float value
 # Imu is a ROS2 message type that contains information about the orientation and angular velocity of a robot
 # mavutil is a pymavlink module that provides a connection to a MAVLink system
-# euler_from_quaternion is a function that converts a quaternion to Euler angles
+# R.from_quat is a scipy function that converts a quaternion to Euler angles
 # argparse is a module for parsing command-line arguments
 # time is a module for working with time
+
 import rclpy
 from rclpy.node import Node
 from nav_msgs.msg import Odometry
 from std_msgs.msg import Float32
 from sensor_msgs.msg import Imu
+from sensor_msgs.msg import Range
 from pymavlink import mavutil
-from tf_transformations import euler_from_quaternion
+from scipy.spatial.transform import Rotation as R
 import argparse
 import time
 
@@ -22,7 +24,8 @@ class ROS2MAVLinkBridge(Node):
     def __init__(self, mavlink_url):
         super().__init__('ros2_mavlink_bridge')
 
-        self.velocity = (0.0, 0.0, 0.0) 
+        # initialize velocity, distance, and time
+        self.velocity = (0.0, 0.0, 0.0)
         self.altitude = 0.0
         self.last_time_us = time.time_ns() // 1000
 
@@ -32,21 +35,27 @@ class ROS2MAVLinkBridge(Node):
         self.prev_imu_angles = None
         self.prev_odom_time_us = None
         self.prev_imu_time_us = None
+        self.last_velocity_time_us = 0
 
         self.position_delta = [0.0, 0.0, 0.0]
         self.prev_odom_position = None
-        self.odom_timeout_us = 500_000  # 0.5 sec
 
-        self.create_subscription(Odometry, '/odom', self.odom_callback, 10)
-        self.create_subscription(Float32, '/depth', self.altitude_callback, 10)
+        self.odom_timeout_us = 500_000  # 0.5 sec
+        self.altitude_timeout_us = 500_000  # 0.5 sec
+        self.last_altitude_time_us = 0
+
+        self.create_subscription(Odometry, '/Odometry/orbSlamOdom', self.odom_callback, 10)
+        self.create_subscription(Range, '/Depth', self.altitude_callback, 10)
         self.create_subscription(Imu, '/imu', self.imu_callback, 10)
         self.rangefinder_pub = self.create_publisher(Float32, '/rangefinder_distance', 10)
 
+        self.start_time_monotonic = time.monotonic()
+        self.last_time_us = 0
         try:
             self.connection = mavutil.mavlink_connection(mavlink_url)
             self.connection.wait_heartbeat()
             self.connection.mav.srcSystem = 1
-            self.connection.mav.srcComponent = 197
+            self.connection.mav.srcComponent = 197  # MAV_COMP_ID_VISUAL_INERTIAL_ODOMETRY
             self.get_logger().info(f"Connected to MAVLink system {self.connection.target_system}, component {self.connection.target_component}")
         except Exception as e:
             self.get_logger().error(f"Failed to connect to MAVLink: {e}")
@@ -58,6 +67,7 @@ class ROS2MAVLinkBridge(Node):
     def odom_callback(self, msg):
         now_us = time.time_ns() // 1000
         self.prev_odom_time_us = now_us
+        self.last_velocity_time_us = now_us
 
         self.velocity = (
             msg.twist.twist.linear.x,
@@ -74,7 +84,7 @@ class ROS2MAVLinkBridge(Node):
         self.prev_odom_position = current_pos
 
         q = msg.pose.pose.orientation
-        angles = euler_from_quaternion([q.x, q.y, q.z, q.w])
+        angles = R.from_quat([q.x, q.y, q.z, q.w]).as_euler('xyz')
         if self.prev_odom_angles is not None:
             self.angle_delta_odom = [
                 angles[i] - self.prev_odom_angles[i] for i in range(3)
@@ -82,7 +92,12 @@ class ROS2MAVLinkBridge(Node):
         self.prev_odom_angles = angles
 
     def altitude_callback(self, msg):
-        self.altitude = msg.data
+        self.get_logger().info(f"Full Range message: {msg}")
+        self.altitude = msg.range
+        self.last_altitude_time_us = time.time_ns() // 1000
+
+        alt_m = self.altitude
+        print(f"this is the alt_m: {alt_m:.3f} m")  # No more curly braces!
 
     def imu_callback(self, msg):
         now_us = time.time_ns() // 1000
@@ -90,30 +105,36 @@ class ROS2MAVLinkBridge(Node):
 
         q = msg.orientation
         try:
-            angles = euler_from_quaternion([q.x, q.y, q.z, q.w])
-            if self.prev_imu_angles:
+            angles = R.from_quat([q.x, q.y, q.z, q.w]).as_euler('xyz')
+            if self.prev_imu_angles is not None:
                 self.angle_delta_imu = [
                     angles[i] - self.prev_imu_angles[i] for i in range(3)
                 ]
+            else:
+                self.angle_delta_imu = [0.0, 0.0, 0.0]
+
             self.prev_imu_angles = angles
         except Exception as e:
             self.get_logger().warn(f"IMU conversion failed: {e}")
 
+
     def send_mavlink(self):
-        now_us = time.time_ns() // 1000
+        now_monotonic = time.monotonic()
+        now_us = int((now_monotonic - self.start_time_monotonic) * 1e6)
         now_ms = now_us // 1000
-        dt_us = now_us - self.last_time_us
+        dt_us = now_us - (self.last_time_us or 0)
         self.last_time_us = now_us
         dt_sec = dt_us / 1e6
-
-        vx, vy, vz = self.velocity
-        fallback_position_delta = [vx * dt_sec, vy * dt_sec, vz * dt_sec]
 
         if self.prev_odom_time_us and (now_us - self.prev_odom_time_us) < self.odom_timeout_us:
             pos_delta_enu = self.position_delta
             angle_delta = self.angle_delta_odom
         else:
-            pos_delta_enu = fallback_position_delta
+            if (now_us - self.last_velocity_time_us) > self.odom_timeout_us:
+                vx, vy, vz = (0.0, 0.0, 0.0)
+            else:
+                vx, vy, vz = self.velocity
+            pos_delta_enu = [vx * dt_sec, vy * dt_sec, vz * dt_sec]
             angle_delta = self.angle_delta_imu
             self.get_logger().warn("Odom timeout: using IMU angle delta and velocity integration")
 
@@ -123,6 +144,11 @@ class ROS2MAVLinkBridge(Node):
             -pos_delta_enu[2]
         ]
 
+        alt_m = self.altitude
+        print("this is the alt_m", {alt_m})
+        distance_cm = max(0, min(2500, int(alt_m * 100)))
+
+
         self.connection.mav.vision_position_delta_send(
             time_usec=now_us,
             time_delta_usec=dt_us,
@@ -131,42 +157,49 @@ class ROS2MAVLinkBridge(Node):
             confidence=100.0
         )
 
-        distance_cm = max(0, min(2500, int(-self.altitude * 100)))
         self.connection.mav.distance_sensor_send(
-            now_ms,
-            0, 5000,
-            distance_cm,
-            mavutil.mavlink.MAV_DISTANCE_SENSOR_UNKNOWN,
-            0,
-            mavutil.mavlink.MAV_SENSOR_ROTATION_PITCH_270,
-            0
+            time_boot_ms=now_ms,
+            min_distance=0,
+            max_distance=5000,
+            current_distance=distance_cm,
+            type=mavutil.mavlink.MAV_DISTANCE_SENSOR_UNKNOWN,
+            id=0,
+            orientation=mavutil.mavlink.MAV_SENSOR_ROTATION_NONE,
+            covariance=0
         )
 
-        vx_ned, vy_ned, vz_ned = vx, vy, -vz
+        vx_ned, vy_ned, vz_ned = self.velocity[0], self.velocity[1], -self.velocity[2]
         groundspeed = (vx_ned**2 + vy_ned**2 + vz_ned**2) ** 0.5
         self.connection.mav.vfr_hud_send(
             airspeed=0.0,
             groundspeed=groundspeed,
             heading=0,
             throttle=0,
-            alt=self.altitude,
+            alt=alt_m,
             climb=vz_ned
         )
+        self.get_logger().info(f"groundspeed: {groundspeed:.2f} m/s")
+        self.get_logger().info(f"distance: {distance_cm:.2f} cm")
+        self.get_logger().info(f"time delta: {dt_us:.2f} us, position delta {position_delta}, angle delta {angle_delta}")
 
-    def read_mavlink_rangefinder(self):
-        msg = self.connection.recv_match(type='VFR_HUD', blocking=False)
-        if msg and hasattr(msg, 'alt'):
-            altitude = float(msg.alt)
-            rangefinder = Float32()
-            rangefinder.data = -altitude
-            self.rangefinder_pub.publish(rangefinder)
-            self.get_logger().info(f"Rangefinder distance from MAVLink: {-altitude:.2f} m")
+
+
+    def read_mavlink_rangefinder(self): 
+        msg = self.connection.recv_match(type='GLOBAL_POSITION_INT', blocking=True, timeout=1) 
+        if msg is not None:
+            # relative_alt is in millimeters above home position
+            depth = -float(msg.relative_alt) / 1000.0  # Convert mm to meters and invert for depth
+            self.rangefinder_pub.publish(Float32(data=depth))
+            self.get_logger().info(f"Depth from ROV (GLOBAL_POSITION_INT): {depth:.2f} m")
+        else:
+            self.get_logger().warn("No GLOBAL_POSITION_INT message received")
 
 
 def main():
     parser = argparse.ArgumentParser(description="ROS2 to MAVLink Bridge")
     parser.add_argument('--mavlink-url', default='tcp:192.168.2.2:6777', help='MAVLink endpoint URL')
     args, _ = parser.parse_known_args()
+    
 
     rclpy.init()
     node = ROS2MAVLinkBridge(args.mavlink_url)

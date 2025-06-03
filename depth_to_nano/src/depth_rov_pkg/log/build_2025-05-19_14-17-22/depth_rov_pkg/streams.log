@@ -1,0 +1,20 @@
+[1.766s] Invoking command in '/home/sysop/MAVLink/depth_to_nano/src/depth_rov_pkg/build/depth_rov_pkg': PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/sysop/MAVLink/depth_to_nano/src/depth_rov_pkg/build/depth_rov_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sysop/MAVLink/depth_to_nano/src/depth_rov_pkg/install/depth_rov_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sysop/MAVLink/depth_to_nano/src/depth_rov_pkg/build/depth_rov_pkg/build --no-deps
+[2.822s] running develop
+[2.998s] /usr/lib/python3/dist-packages/pkg_resources/__init__.py:116: PkgResourcesDeprecationWarning: 1.12.1-git20200711.33e2d80-dfsg1-0.6 is an invalid version and will not be supported in a future release
+[2.998s]   warnings.warn(
+[3.331s] running egg_info
+[3.331s] creating depth_rov_pkg.egg-info
+[3.331s] writing depth_rov_pkg.egg-info/PKG-INFO
+[3.332s] writing dependency_links to depth_rov_pkg.egg-info/dependency_links.txt
+[3.332s] writing entry points to depth_rov_pkg.egg-info/entry_points.txt
+[3.333s] writing requirements to depth_rov_pkg.egg-info/requires.txt
+[3.333s] writing top-level names to depth_rov_pkg.egg-info/top_level.txt
+[3.342s] writing manifest file 'depth_rov_pkg.egg-info/SOURCES.txt'
+[3.346s] reading manifest file 'depth_rov_pkg.egg-info/SOURCES.txt'
+[3.348s] writing manifest file 'depth_rov_pkg.egg-info/SOURCES.txt'
+[3.453s] running build_ext
+[3.454s] Creating /home/sysop/MAVLink/depth_to_nano/src/depth_rov_pkg/install/depth_rov_pkg/lib/python3.10/site-packages/depth-rov-pkg.egg-link (link to .)
+[3.456s] Installing depth_from_mavlink script to /home/sysop/MAVLink/depth_to_nano/src/depth_rov_pkg/install/depth_rov_pkg/bin
+[3.456s] 
+[3.456s] Installed /home/sysop/MAVLink/depth_to_nano/src/depth_rov_pkg/build/depth_rov_pkg
+[3.564s] Invoked command in '/home/sysop/MAVLink/depth_to_nano/src/depth_rov_pkg/build/depth_rov_pkg' returned '0': PS1=\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ PYTHONPATH=/home/sysop/MAVLink/depth_to_nano/src/depth_rov_pkg/build/depth_rov_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/sysop/MAVLink/depth_to_nano/src/depth_rov_pkg/install/depth_rov_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/sysop/MAVLink/depth_to_nano/src/depth_rov_pkg/build/depth_rov_pkg/build --no-deps

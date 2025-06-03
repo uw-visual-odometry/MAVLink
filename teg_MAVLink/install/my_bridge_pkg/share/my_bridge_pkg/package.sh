@@ -81,6 +81,7 @@ _colcon_package_sh_source_script() {
 _colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/my_bridge_pkg/hook/path.sh"
 _colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/my_bridge_pkg/hook/pythonpath.sh"
 _colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/share/my_bridge_pkg/hook/pythonscriptspath.sh"
+_colcon_package_sh_source_script "$COLCON_CURRENT_PREFIX/../../build/my_bridge_pkg/share/my_bridge_pkg/hook/pythonpath_develop.sh"
 
 unset _colcon_package_sh_source_script
 unset COLCON_CURRENT_PREFIX

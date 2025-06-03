@@ -1,0 +1,11 @@
+setup.cfg
+setup.py
+depth_pkg/__init__.py
+depth_pkg/depth_to_mavlink.py
+depth_pkg.egg-info/PKG-INFO
+depth_pkg.egg-info/SOURCES.txt
+depth_pkg.egg-info/dependency_links.txt
+depth_pkg.egg-info/entry_points.txt
+depth_pkg.egg-info/requires.txt
+depth_pkg.egg-info/top_level.txt
+depth_pkg.egg-info/zip-safe

@@ -1,0 +1,16 @@
+running develop
+running egg_info
+creating my_bridge_pkg.egg-info
+writing my_bridge_pkg.egg-info/PKG-INFO
+writing dependency_links to my_bridge_pkg.egg-info/dependency_links.txt
+writing entry points to my_bridge_pkg.egg-info/entry_points.txt
+writing requirements to my_bridge_pkg.egg-info/requires.txt
+writing top-level names to my_bridge_pkg.egg-info/top_level.txt
+writing manifest file 'my_bridge_pkg.egg-info/SOURCES.txt'
+reading manifest file 'my_bridge_pkg.egg-info/SOURCES.txt'
+writing manifest file 'my_bridge_pkg.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/sysop/MAVLink/teg_MAVLink/install/my_bridge_pkg/lib/python3.10/site-packages/my-bridge-pkg.egg-link (link to .)
+Installing ros2_mavlink_bridge script to /home/sysop/MAVLink/teg_MAVLink/install/my_bridge_pkg/bin
+
+Installed /home/sysop/MAVLink/teg_MAVLink/build/my_bridge_pkg
