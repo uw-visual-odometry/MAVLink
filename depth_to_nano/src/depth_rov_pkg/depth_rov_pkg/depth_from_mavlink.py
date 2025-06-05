@@ -11,7 +11,7 @@ class DepthReaderNode(Node):
     def __init__(self, mavlink_url):
         super().__init__('depth_reader')
 
-        self.depth_pub = self.create_publisher(Float32, '/alt_from_rov', 10)
+        self.depth_pub = self.create_publisher(Float32, '/depth_from_rov', 10)
 
         try:
             self.connection = mavutil.mavlink_connection(mavlink_url)
