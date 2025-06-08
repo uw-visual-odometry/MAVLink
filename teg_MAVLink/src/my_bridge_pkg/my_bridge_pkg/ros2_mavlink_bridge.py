@@ -7,7 +7,6 @@
 # R.from_quat is a scipy function that converts a quaternion to Euler angles
 # argparse is a module for parsing command-line arguments
 # time is a module for working with time
-
 import rclpy
 from rclpy.node import Node
 from nav_msgs.msg import Odometry
@@ -44,13 +43,17 @@ class ROS2MAVLinkBridge(Node):
         self.altitude_timeout_us = 500_000  # 0.5 sec
         self.last_altitude_time_us = 0
 
+        # Create subscriptions to Odometry pose topic, depth (altitude of ROV), and Jetson Nano IMU
         self.create_subscription(Odometry, '/Odometry/orbSlamOdom', self.odom_callback, 10)
         self.create_subscription(Range, '/Depth', self.altitude_callback, 10)
         self.create_subscription(Imu, '/imu', self.imu_callback, 10)
+        # Create publisher for the depth from the ROV BAR30 sensor
         self.rangefinder_pub = self.create_publisher(Float32, '/rangefinder_distance', 10)
 
+        # Initialize time
         self.start_time_monotonic = time.monotonic()
         self.last_time_us = 0
+        # try and except the connection via mavlink from nano to pi
         try:
             self.connection = mavutil.mavlink_connection(mavlink_url)
             self.connection.wait_heartbeat()
@@ -61,9 +64,12 @@ class ROS2MAVLinkBridge(Node):
             self.get_logger().error(f"Failed to connect to MAVLink: {e}")
             raise
 
+        # The mavlink from nano to pi should be sent at 10 Hz
         self.create_timer(0.1, self.send_mavlink)               # 10 Hz
+        # Read the pi depth from 5 Hz
         self.create_timer(0.2, self.read_mavlink_rangefinder)   # 5 Hz
 
+    # retrieve the odometry topic fields, such as velocity, pose, and orientation
     def odom_callback(self, msg):
         now_us = time.time_ns() // 1000
         self.prev_odom_time_us = now_us
@@ -91,6 +97,7 @@ class ROS2MAVLinkBridge(Node):
             ]
         self.prev_odom_angles = angles
 
+    # retrieve the altitude of the ROV from the range message
     def altitude_callback(self, msg):
         self.get_logger().info(f"Full Range message: {msg}")
         self.altitude = msg.range
@@ -99,6 +106,7 @@ class ROS2MAVLinkBridge(Node):
         alt_m = self.altitude
         print(f"this is the alt_m: {alt_m:.3f} m")  # No more curly braces!
 
+    # retrive the imu sensor orientation 
     def imu_callback(self, msg):
         now_us = time.time_ns() // 1000
         self.prev_imu_time_us = now_us
@@ -117,7 +125,7 @@ class ROS2MAVLinkBridge(Node):
         except Exception as e:
             self.get_logger().warn(f"IMU conversion failed: {e}")
 
-
+    # send the mavlink information
     def send_mavlink(self):
         now_monotonic = time.monotonic()
         now_us = int((now_monotonic - self.start_time_monotonic) * 1e6)
@@ -138,9 +146,10 @@ class ROS2MAVLinkBridge(Node):
             angle_delta = self.angle_delta_imu
             self.get_logger().warn("Odom timeout: using IMU angle delta and velocity integration")
 
+        # transfer from enu to frd, swap e and n values and flip the up to down
         position_delta = [
-            pos_delta_enu[0],
             pos_delta_enu[1],
+            pos_delta_enu[0],
             -pos_delta_enu[2]
         ]
 
@@ -148,7 +157,9 @@ class ROS2MAVLinkBridge(Node):
         print("this is the alt_m", {alt_m})
         distance_cm = max(0, min(2500, int(alt_m * 100)))
 
-
+        # vision position delta message format
+        # confidence is used to tell the flight controller confidence of values
+        # if set to a dependent value, it would be better for controls integration
         self.connection.mav.vision_position_delta_send(
             time_usec=now_us,
             time_delta_usec=dt_us,
@@ -157,6 +168,8 @@ class ROS2MAVLinkBridge(Node):
             confidence=100.0
         )
 
+        # send the distance / altitude values to the Pi
+        # can variably send the covariance to higher values if odometry breaks
         self.connection.mav.distance_sensor_send(
             time_boot_ms=now_ms,
             min_distance=0,
@@ -168,6 +181,7 @@ class ROS2MAVLinkBridge(Node):
             covariance=0
         )
 
+        # send groundspeed (sqrt of x, y, and z components squared) to the hud ** provides no functionality to flight controller
         vx_ned, vy_ned, vz_ned = self.velocity[0], self.velocity[1], -self.velocity[2]
         groundspeed = (vx_ned**2 + vy_ned**2 + vz_ned**2) ** 0.5
         self.connection.mav.vfr_hud_send(
